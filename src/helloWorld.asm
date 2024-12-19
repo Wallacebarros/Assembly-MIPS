@@ -1,13 +1,9 @@
 .data
-
-    # Área de variavel da memoria pincipal
-
-    message: .asciiz "Hello World !!!" # String definida na memoria pincipal 
-
+    meuChar: .byte 'A'
 .text
-
-    # Área de execulção
-
     li $v0, 4 # retun do tipo string
-    la $a0, message # argumento da função
+    la $a0, meuChar # argumento da função
     syscall # execução da função
+
+    li $v0, 10 # encerra o programa
+    syscall # execulta a função
