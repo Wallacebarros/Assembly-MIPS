@@ -1,2 +1,5 @@
 .text
-    addi $t1, $zero, 20 # atribuindo 20 a t1
+    li $t1, 20
+    li $t2, 5
+    sub $t0, $t1, $t2
+    subi $t0, $t1, 10
