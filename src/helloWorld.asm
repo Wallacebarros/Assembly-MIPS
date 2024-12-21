@@ -1,9 +1,9 @@
 .data
-    meuChar: .byte 'A'
+    numero: .word 56 # valor inteiro na memoria principal
 .text
-    li $v0, 4 # retun do tipo string
-    la $a0, meuChar # argumento da função
-    syscall # execução da função
+    li $v0, 1
+    lw $a0, numero
+    syscall
 
-    li $v0, 10 # encerra o programa
-    syscall # execulta a função
+    li $v0, 10
+    syscall
