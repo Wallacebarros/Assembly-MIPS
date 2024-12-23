@@ -1,22 +1,16 @@
 .data
-    qualNome: .asciiz "Qual seu nome ? "
-    seuNome: .asciiz "Seu nome e: "
-
-    nome: .space 25
+    menssage: .asciiz "Digite um numero float: "
+    zero: .float 0.0
 .text
     li $v0, 4
-    la $a0, qualNome
+    la $a0, menssage
     syscall
 
-    li $v0, 8
-    la $a0, nome
-    la $a1, 25
+    li $v0, 6 # armaena em $f0
     syscall
 
-    li $v0, 4
-    la $a0, seuNome
-    syscall
+    lwc1 $f1, zero
+    add.s $f12, $f1, $f0
 
-    li $v0, 4
-    la $a0, nome
+    li $v0, 2
     syscall
