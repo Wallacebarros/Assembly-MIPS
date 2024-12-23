@@ -1,16 +1,16 @@
 .data
-    menssage: .asciiz "Digite um numero float: "
-    zero: .float 0.0
+    menssage: .asciiz "Digite um numero double: "
+    zero: .double 0.0
 .text
     li $v0, 4
     la $a0, menssage
     syscall
 
-    li $v0, 6 # armaena em $f0
+    li $v0, 7 # armaena em $f0
     syscall
 
-    lwc1 $f1, zero
-    add.s $f12, $f1, $f0
-
-    li $v0, 2
+    ldc1 $f2, zero
+    add.d $f12, $f2, $f0
+ 
+    li $v0, 3
     syscall
