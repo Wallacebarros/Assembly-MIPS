@@ -1,15 +1,20 @@
+.data
+    qualIdade: .asciiz "Qual a sua idade ? "
+    suaIdade: .asciiz "Sua idade e: "
 .text
+    li $v0, 4
+    la $a0, qualIdade
+    syscall
 
-    # Divisão de números inteiros
+    li $v0, 5
+    syscall
 
-    li $t1, 15
-    li $t2, 5
-    
-    div $t1, $t2 # dividir 15 por 5; // 3
-    
-    mflo $s0 # parte inteira da divisão
-    mfhi $s1 # resto da divisão 
+    move $t0, $v0
+
+    li $v0, 4
+    la $a0, suaIdade
+    syscall
 
     li $v0, 1
-    move $a0, $s0
+    move $a0, $t0
     syscall
