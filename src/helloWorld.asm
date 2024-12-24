@@ -1,32 +1,44 @@
 .data
-    digite: .asciiz "Digite um numero: "
-    impar: .asciiz "O numero e impar"
-    par: .asciiz "O numero e par"
+    pergunta: .asciiz "Digite um numero inteiro: "
+
+    menor: .asciiz "O numero e menor que zero"
+    maior: .asciiz "O numero e maior que zero"
+    igual: .asciiz "O numero e igual a zero"
 .text
     li $v0, 4
-    la $a0, digite
+    la $a0, pergunta
     syscall
 
     li $v0, 5
     syscall
 
-    li $t0, 2
-    div $v0, $t0
+    move $t1, $v0
 
-    mfhi $t1
-    
-    move $t0, $zero
-    bne $t1, $t0, numeroImpar
-    # beq-=, bne-!=, blt-<, bgt->, ble-<=, bge->=
+    blt $t1, $zero, MENOR
+    bgt $t1, $zero, MAIOR
+    beq $t1, $zero, IGUAL
 
-    li $v0, 4
-    la $a0, par
-    syscall
-
-    li $v0, 10
-    syscall
-
-    numeroImpar:
+    MENOR:
         li $v0, 4
-        la $a0, impar
+        la $a0, menor
+        syscall
+
+        j EXIT
+
+    MAIOR:
+        li $v0, 4
+        la $a0, maior
+        syscall
+
+        j EXIT
+
+    IGUAL:
+        li $v0, 4
+        la $a0, igual
+        syscall
+
+        j EXIT
+
+    EXIT:
+        li $v0, 10
         syscall
